@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="StockTrackingModelStoreContainer" CdmEntityContainer="StockTrackingEntities">
+    <EntitySetMapping Name="CATEGORies">
+      <EntityTypeMapping TypeName="StockTrackingModel.CATEGORY">
+        <MappingFragment StoreEntitySet="CATEGORY">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+          <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+          <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CUSTOMERs">
+      <EntityTypeMapping TypeName="StockTrackingModel.CUSTOMER">
+        <MappingFragment StoreEntitySet="CUSTOMER">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+          <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+          <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PRODUCTs">
+      <EntityTypeMapping TypeName="StockTrackingModel.PRODUCT">
+        <MappingFragment StoreEntitySet="PRODUCT">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+          <ScalarProperty Name="StockAmout" ColumnName="StockAmout" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+          <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SALES">
+      <EntityTypeMapping TypeName="StockTrackingModel.SALE">
+        <MappingFragment StoreEntitySet="SALES">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+          <ScalarProperty Name="ProductSalesAmount" ColumnName="ProductSalesAmount" />
+          <ScalarProperty Name="ProductSalesPrice" ColumnName="ProductSalesPrice" />
+          <ScalarProperty Name="SalesDate" ColumnName="SalesDate" />
+          <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+          <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

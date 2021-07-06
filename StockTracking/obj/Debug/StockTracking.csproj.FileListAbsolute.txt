@@ -1,0 +1,14 @@
+C:\Users\Crowley\source\repos\StockTracking\StockTracking\bin\Debug\StockTracking.exe.config
+C:\Users\Crowley\source\repos\StockTracking\StockTracking\bin\Debug\StockTracking.exe
+C:\Users\Crowley\source\repos\StockTracking\StockTracking\bin\Debug\StockTracking.pdb
+C:\Users\Crowley\source\repos\StockTracking\StockTracking\bin\Debug\EntityFramework.dll
+C:\Users\Crowley\source\repos\StockTracking\StockTracking\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Crowley\source\repos\StockTracking\StockTracking\bin\Debug\EntityFramework.xml
+C:\Users\Crowley\source\repos\StockTracking\StockTracking\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Crowley\source\repos\StockTracking\StockTracking\obj\Debug\StockTracking.csprojAssemblyReference.cache
+C:\Users\Crowley\source\repos\StockTracking\StockTracking\obj\Debug\StockTracking.Properties.Resources.resources
+C:\Users\Crowley\source\repos\StockTracking\StockTracking\obj\Debug\StockTracking.csproj.GenerateResource.cache
+C:\Users\Crowley\source\repos\StockTracking\StockTracking\obj\Debug\StockTracking.csproj.CoreCompileInputs.cache
+C:\Users\Crowley\source\repos\StockTracking\StockTracking\obj\Debug\StockTracking.csproj.CopyComplete
+C:\Users\Crowley\source\repos\StockTracking\StockTracking\obj\Debug\StockTracking.exe
+C:\Users\Crowley\source\repos\StockTracking\StockTracking\obj\Debug\StockTracking.pdb
