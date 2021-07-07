@@ -19,6 +19,11 @@ namespace StockTracking.DAL.DAO
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Usamos LINQ para conexion e insertar(select, update, delete) datos
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <returns></returns>
         public bool Insert(CATEGORY entity)
         {
             try
@@ -35,7 +40,16 @@ namespace StockTracking.DAL.DAO
 
         public List<CategoryDetailDTO> Select()
         {
-            throw new NotImplementedException();
+            List<CategoryDetailDTO> categories = new List<CategoryDetailDTO>();
+            var list = db.CATEGORies;
+            foreach (var item in list)
+            {
+                CategoryDetailDTO dto = new CategoryDetailDTO();
+                dto.Id = item.Id;
+                dto.CategoryName = item.CategoryName;
+                categories.Add(dto);
+            }
+            return categories;
         }
 
         public bool Update(CATEGORY entity)
