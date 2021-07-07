@@ -33,7 +33,7 @@
             this.txtPrice = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cmbCategory = new System.Windows.Forms.ComboBox();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -85,14 +85,14 @@
             this.label3.TabIndex = 7;
             this.label3.Text = "Category";
             // 
-            // comboBox1
+            // cmbCategory
             // 
-            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(186, 70);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(183, 28);
-            this.comboBox1.TabIndex = 1;
+            this.cmbCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbCategory.FormattingEnabled = true;
+            this.cmbCategory.Location = new System.Drawing.Point(186, 70);
+            this.cmbCategory.Name = "cmbCategory";
+            this.cmbCategory.Size = new System.Drawing.Size(183, 28);
+            this.cmbCategory.TabIndex = 1;
             // 
             // btnClose
             // 
@@ -114,6 +114,7 @@
             this.btnSave.TabIndex = 3;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // FrmProduct
             // 
@@ -122,7 +123,7 @@
             this.ClientSize = new System.Drawing.Size(408, 239);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.cmbCategory);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtPrice);
             this.Controls.Add(this.label2);
@@ -131,6 +132,7 @@
             this.Name = "FrmProduct";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Product";
+            this.Load += new System.EventHandler(this.FrmProduct_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -143,7 +145,7 @@
         private System.Windows.Forms.TextBox txtPrice;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cmbCategory;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Button btnSave;
     }
