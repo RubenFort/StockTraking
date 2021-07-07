@@ -33,6 +33,8 @@ namespace StockTracking
             this.Hide();
             frm.ShowDialog();
             this.Visible = true;
+            dto = bll.Select();
+            dataGridView1.DataSource = dto.customers;
         }
 
         private void FrmCustomerList_Load(object sender, EventArgs e)
@@ -45,7 +47,9 @@ namespace StockTracking
 
         private void txtCustomerName_TextChanged(object sender, EventArgs e)
         {
-
+            List<CustomerDetailDTO> list = dto.customers;
+            list = list.Where(x => x.customerName.Contains(txtCustomerName.Text)).ToList();
+            dataGridView1.DataSource = list;
         }
     }
 }
