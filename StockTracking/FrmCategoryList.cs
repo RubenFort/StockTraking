@@ -42,7 +42,15 @@ namespace StockTracking
             dto = bll.Select();
             dataGridView1.DataSource = dto.categories;
             dataGridView1.Columns[0].Visible = false;
-            dataGridView1.Columns[0].HeaderText = "Category Name";
+            dataGridView1.Columns[1].HeaderText = "Category Name";
+        }
+
+        private void txtCategoryName_TextChanged(object sender, EventArgs e)
+        {
+            List<CategoryDetailDTO> list = dto.categories;
+            //list se flitra a si misma en base a los CategoryName que coincidan con la caja de texto
+            list = list.Where(x => x.CategoryName.Contains(txtCategoryName.Text)).ToList();
+            dataGridView1.DataSource = list;
         }
     }
 }
