@@ -16,6 +16,7 @@ namespace StockTracking
     {
         ProductBLL bll = new ProductBLL();
         ProductDTO dto = new ProductDTO();
+        ProductDetailDTO detail = new ProductDetailDTO();
         bool comboFull = false;
 
         public FrmAddStock()
@@ -59,6 +60,44 @@ namespace StockTracking
                 List<ProductDetailDTO> list = dto.products;
                 list = list.Where(x => x.categoryId == Convert.ToInt32(cmbCategory.SelectedValue)).ToList();
                 dataGridView1.DataSource = list;
+                if (list.Count == 0)
+                {
+                    txtPrice.Clear();
+                    txtProductName.Clear();
+                    txtStock.Clear();
+                }
+            }
+        }
+
+        private void dataGridView1_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            detail.productName = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
+            txtProductName.Text = detail.productName;
+            detail.price = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[3].Value);
+            txtPrice.Text = detail.price.ToString();
+            detail.stockAmount = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[2].Value);
+            detail.productId = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[4].Value);
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            if (txtProductName.Text.Trim() == "")
+                MessageBox.Show("Please select a product from table");
+            else if (txtStock.Text.Trim() == "")
+                MessageBox.Show("Please give a stock amount");
+            else
+            {
+                int sumStock = detail.stockAmount;
+                sumStock += Convert.ToInt32(txtStock.Text);
+                detail.stockAmount = sumStock;
+                if (bll.Update(detail))
+                {
+                    MessageBox.Show("Stock was added");
+                    bll = new ProductBLL();
+                    dto = bll.Select();
+                    dataGridView1.DataSource = dto.products;
+                    txtStock.Clear();
+                }
             }
         }
     }

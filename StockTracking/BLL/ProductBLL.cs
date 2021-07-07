@@ -43,7 +43,13 @@ namespace StockTracking.BLL
 
         public bool Update(ProductDetailDTO entity)
         {
-            throw new NotImplementedException();
+            PRODUCT product = new PRODUCT();
+            product.Id = entity.productId;
+            product.Price = entity.price;
+            product.ProductName = entity.productName;
+            product.StockAmout = entity.stockAmount;
+            product.CategoryId = entity.categoryId;
+            return dao.Update(product);
         }
     }
 }

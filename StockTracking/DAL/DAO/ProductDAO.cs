@@ -65,14 +65,26 @@ namespace StockTracking.DAL.DAO
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
         }
 
         public bool Update(PRODUCT entity)
         {
-            throw new NotImplementedException();
+            try
+            {
+                PRODUCT product = db.PRODUCTs.First(x => x.Id == entity.Id);
+                if (entity.CategoryId == 0)
+                {
+                    product.StockAmout = entity.StockAmout;
+                    db.SaveChanges();
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }
