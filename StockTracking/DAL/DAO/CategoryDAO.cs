@@ -7,7 +7,7 @@ using StockTracking.DAL.DTO;
 
 namespace StockTracking.DAL.DAO
 {
-    public class CategoryDAO : IDAO<CATEGORY, CategoryDetailDTO>
+    public class CategoryDAO : StockContext, IDAO<CATEGORY, CategoryDetailDTO>
     {
         public bool Delete(CATEGORY entity)
         {
@@ -21,7 +21,16 @@ namespace StockTracking.DAL.DAO
 
         public bool Insert(CATEGORY entity)
         {
-            throw new NotImplementedException();
+            try
+            {
+                db.CATEGORies.Add(entity);
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public List<CategoryDetailDTO> Select()
