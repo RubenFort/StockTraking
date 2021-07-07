@@ -89,6 +89,7 @@
             this.btnClean.TabIndex = 7;
             this.btnClean.Text = "Clean";
             this.btnClean.UseVisualStyleBackColor = true;
+            this.btnClean.Click += new System.EventHandler(this.btnClean_Click);
             // 
             // btnSearch
             // 
@@ -99,6 +100,7 @@
             this.btnSearch.TabIndex = 6;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // groupBox2
             // 

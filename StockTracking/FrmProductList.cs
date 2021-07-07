@@ -46,6 +46,7 @@ namespace StockTracking
             this.Visible = true;
             dto = bll.Select();
             dataGridView1.DataSource = dto.products;
+            CleanFilters();
         }
 
         private void txtPrice_KeyPress(object sender, KeyPressEventArgs e)
@@ -72,6 +73,58 @@ namespace StockTracking
             dataGridView1.Columns[3].HeaderText = "Price";
             dataGridView1.Columns[4].Visible = false;
             dataGridView1.Columns[5].Visible = false;
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            List<ProductDetailDTO> list = dto.products;
+            if (txtProductName.Text.Trim() != null)
+                list = list.Where(x => x.productName.Contains(txtProductName.Text)).ToList();
+            if (cmbCategory.SelectedIndex != -1)
+                list = list.Where(x => x.categoryId == Convert.ToInt32(cmbCategory.SelectedValue)).ToList();
+            if (txtPrice.Text.Trim() != "")
+            {
+                if (rbEqualPrice.Checked)
+                    list = list.Where(x => x.price == Convert.ToInt32(txtPrice.Text)).ToList();
+                else if (rbMorePrice.Checked)
+                    list = list.Where(x => x.price > Convert.ToInt32(txtPrice.Text)).ToList();
+                else if (rbLessPrice.Checked)
+                    list = list.Where(x => x.price < Convert.ToInt32(txtPrice.Text)).ToList();
+                else
+                    MessageBox.Show("Please select a criterion from price group");
+            }
+            if (txtStock.Text.Trim() != "")
+            {
+                if (rbEqualStock.Checked)
+                    list = list.Where(x => x.stockAmount == Convert.ToInt32(txtStock.Text)).ToList();
+                else if (rbMoreStock.Checked)
+                    list = list.Where(x => x.stockAmount > Convert.ToInt32(txtStock.Text)).ToList();
+                else if (rbLessStock.Checked)
+                    list = list.Where(x => x.stockAmount < Convert.ToInt32(txtStock.Text)).ToList();
+                else
+                    MessageBox.Show("Please select a criterion from stock group");
+            }
+            dataGridView1.DataSource = list;
+        }
+
+        private void btnClean_Click(object sender, EventArgs e)
+        {
+            CleanFilters();
+        }
+
+        private void CleanFilters()
+        {
+            txtPrice.Clear();
+            txtProductName.Clear();
+            txtStock.Clear();
+            cmbCategory.SelectedIndex = -1;
+            rbEqualPrice.Checked = false;
+            rbMorePrice.Checked = false;
+            rbLessPrice.Checked = false;
+            rbEqualStock.Checked = false;
+            rbMoreStock.Checked = false;
+            rbLessStock.Checked = false;
+            dataGridView1.DataSource = dto.products;
         }
     }
 }
