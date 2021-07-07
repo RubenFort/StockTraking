@@ -21,3 +21,6 @@ C:\Users\Crowley\source\repos\StockTracking\StockTracking\obj\Debug\StockTrackin
 C:\Users\Crowley\source\repos\StockTracking\StockTracking\obj\Debug\StockTracking.FrmProductList.resources
 C:\Users\Crowley\source\repos\StockTracking\StockTracking\obj\Debug\StockTracking.FrmSaleList.resources
 C:\Users\Crowley\source\repos\StockTracking\StockTracking\obj\Debug\StockTracking.FrmSales.resources
+C:\Users\Crowley\source\repos\StockTracking\StockTracking\obj\Debug\StockTracking.FrmDeleted.resources
+C:\Users\Crowley\source\repos\StockTracking\StockTracking\obj\Debug\StockTracking.FrmStockAlert.resources
+C:\Users\Crowley\source\repos\StockTracking\StockTracking\obj\Debug\StockTracking.FrmMain.resources

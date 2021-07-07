@@ -34,7 +34,10 @@ namespace StockTracking
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-
+            FrmProduct frm = new FrmProduct();
+            this.Hide();
+            frm.ShowDialog();
+            this.Visible = true;
         }
 
         private void txtPrice_KeyPress(object sender, KeyPressEventArgs e)

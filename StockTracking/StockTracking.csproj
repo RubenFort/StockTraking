@@ -114,6 +114,12 @@
     <Compile Include="FrmCustomerList.Designer.cs">
       <DependentUpon>FrmCustomerList.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmDeleted.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDeleted.Designer.cs">
+      <DependentUpon>FrmDeleted.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmProduct.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -138,6 +144,18 @@
     <Compile Include="FrmSales.Designer.cs">
       <DependentUpon>FrmSales.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmStockAlert.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmStockAlert.Designer.cs">
+      <DependentUpon>FrmStockAlert.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMain.Designer.cs">
+      <DependentUpon>FrmMain.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils.cs" />
@@ -156,6 +174,9 @@
     <EmbeddedResource Include="FrmCustomerList.resx">
       <DependentUpon>FrmCustomerList.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmDeleted.resx">
+      <DependentUpon>FrmDeleted.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmProduct.resx">
       <DependentUpon>FrmProduct.cs</DependentUpon>
     </EmbeddedResource>
@@ -168,6 +189,12 @@
     <EmbeddedResource Include="FrmSales.resx">
       <DependentUpon>FrmSales.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmStockAlert.resx">
+      <DependentUpon>FrmStockAlert.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMain.resx">
+      <DependentUpon>FrmMain.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -176,6 +203,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EntityDeploy Include="DAL\DataModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
@@ -209,6 +237,13 @@
       <DependentUpon>DataModel.edmx</DependentUpon>
       <LastGenOutput>DataModel.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\coupon.png" />
+    <None Include="Resources\box.png" />
+    <None Include="Resources\warehouse.png" />
+    <None Include="Resources\employee_person_business_teamwork_businessman_icon_175935.png" />
+    <None Include="Resources\team_group_people_management_business_work_employees_icon_153126.png" />
+    <None Include="Resources\delete.png" />
+    <None Include="Resources\disable_remove_delete_exit_close_11881.png" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
