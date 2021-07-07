@@ -37,7 +37,23 @@ namespace StockTracking.DAL.DAO
 
         public List<CustomerDetailDTO> Select()
         {
-            throw new NotImplementedException();
+            try
+            {
+                List<CustomerDetailDTO> customers = new List<CustomerDetailDTO>();
+                var list = db.CUSTOMERs;
+                foreach (var item in list)
+                {
+                    CustomerDetailDTO dto = new CustomerDetailDTO();
+                    dto.customerName = item.CustomerName;
+                    dto.id = item.Id;
+                    customers.Add(dto);
+                }
+                return customers;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public bool Update(CUSTOMER entity)

@@ -33,7 +33,7 @@ namespace StockTracking
             else
             {
                 CustomerDetailDTO customer = new CustomerDetailDTO();
-                customer.CustomerName = txtCustomerName.Text;
+                customer.customerName = txtCustomerName.Text;
                 if (bll.Insert(customer))
                 {
                     MessageBox.Show("Customer was added");

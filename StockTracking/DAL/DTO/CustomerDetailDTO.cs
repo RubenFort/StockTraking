@@ -8,7 +8,7 @@ namespace StockTracking.DAL.DTO
 {
     public class CustomerDetailDTO
     {
-        public int MyProperty { get; set; }
-        public string CustomerName { get; set; }
+        public int id { get; set; }
+        public string customerName { get; set; }
     }
 }

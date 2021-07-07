@@ -26,13 +26,15 @@ namespace StockTracking.BLL
         public bool Insert(CustomerDetailDTO entity)
         {
             CUSTOMER customer = new CUSTOMER();
-            customer.CustomerName = entity.CustomerName;
+            customer.CustomerName = entity.customerName;
             return dao.Insert(customer);
         }
 
         public CustomerDTO Select()
         {
-            throw new NotImplementedException();
+            CustomerDTO dto = new CustomerDTO();
+            dto.customers = dao.Select();
+            return dto;
         }
 
         public bool Update(CustomerDetailDTO entity)
