@@ -87,6 +87,8 @@
     <Compile Include="DAL\DTO\CategoryDTO.cs" />
     <Compile Include="DAL\DTO\CustomerDetailDTO.cs" />
     <Compile Include="DAL\DTO\CustomerDTO.cs" />
+    <Compile Include="DAL\DTO\ProductDetailDTO.cs" />
+    <Compile Include="DAL\DTO\ProductDTO.cs" />
     <Compile Include="DAL\PRODUCT.cs">
       <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
