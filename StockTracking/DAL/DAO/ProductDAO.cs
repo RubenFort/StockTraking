@@ -36,7 +36,38 @@ namespace StockTracking.DAL.DAO
 
         public List<ProductDetailDTO> Select()
         {
-            throw new NotImplementedException();
+            try
+            {
+                List<ProductDetailDTO> products = new List<ProductDetailDTO>();
+                var list = (from p in db.PRODUCTs
+                            join c in db.CATEGORies on p.CategoryId equals c.Id
+                            select new
+                            {
+                                productName = p.ProductName,
+                                categoryName = c.CategoryName,
+                                stockAmount = p.StockAmout,
+                                price = p.Price,
+                                productId = p.Id,
+                                categoryId = c.Id
+                            }).OrderBy(x => x.productName).ToList();
+                foreach (var item in list)
+                {
+                    ProductDetailDTO dto = new ProductDetailDTO();
+                    dto.productName = item.productName;
+                    dto.categoryName = item.categoryName;
+                    dto.stockAmount = item.stockAmount;
+                    dto.price = item.price;
+                    dto.productId = item.productId;
+                    dto.categoryId = item.categoryId;
+                    products.Add(dto);
+                }
+                return products;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
 
         public bool Update(PRODUCT entity)

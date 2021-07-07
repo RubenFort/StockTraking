@@ -37,6 +37,7 @@ namespace StockTracking.BLL
         {
             ProductDTO dto = new ProductDTO();
             dto.categories = categoryDao.Select();
+            dto.products = dao.Select();
             return dto;
         }
 

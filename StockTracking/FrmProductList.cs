@@ -44,6 +44,8 @@ namespace StockTracking
             this.Hide();
             frm.ShowDialog();
             this.Visible = true;
+            dto = bll.Select();
+            dataGridView1.DataSource = dto.products;
         }
 
         private void txtPrice_KeyPress(object sender, KeyPressEventArgs e)
@@ -63,6 +65,13 @@ namespace StockTracking
             cmbCategory.DisplayMember = "CategoryName";
             cmbCategory.ValueMember = "Id";
             cmbCategory.SelectedIndex = -1;
+            dataGridView1.DataSource = dto.products;
+            dataGridView1.Columns[0].HeaderText = "Product Name";
+            dataGridView1.Columns[1].HeaderText = "Category Name";
+            dataGridView1.Columns[2].HeaderText = "Stock Amount";
+            dataGridView1.Columns[3].HeaderText = "Price";
+            dataGridView1.Columns[4].Visible = false;
+            dataGridView1.Columns[5].Visible = false;
         }
     }
 }
