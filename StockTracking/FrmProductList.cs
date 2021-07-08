@@ -30,7 +30,24 @@ namespace StockTracking
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-
+            if (detail.productId == 0)
+                MessageBox.Show("Please select a product from table");
+            else
+            {
+                DialogResult result = MessageBox.Show("Are tou sure!", "Warning!", MessageBoxButtons.YesNo);
+                if(result == DialogResult.Yes)
+                {
+                    if (bll.Delete(detail))
+                    {
+                        MessageBox.Show("Show was Deleted");
+                        bll = new ProductBLL();
+                        dto = bll.Select();
+                        dataGridView1.DataSource = dto.products;
+                        cmbCategory.DataSource = dto.categories;
+                        CleanFilters();
+                    }
+                }
+            }
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
