@@ -16,6 +16,7 @@ namespace StockTracking
     {
         public SalesDTO dto = new SalesDTO();
         SalesDetailDTO detail = new SalesDetailDTO();
+        SalesBLL bll = new SalesBLL();
         bool comboFull = false;
 
         public FrmSales()
@@ -95,6 +96,33 @@ namespace StockTracking
             detail.customerName = gridCustomers.Rows[e.RowIndex].Cells[1].Value.ToString();
             detail.customerId = Convert.ToInt32(gridCustomers.Rows[e.RowIndex].Cells[0].Value);
             txtCustomerName.Text = detail.customerName;
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            if (detail.productId == 0)
+                MessageBox.Show("Please select a product from product table");
+            else if (detail.productId == 0)
+                MessageBox.Show("Please select a customer from customer table");
+            else if (detail.stockAmount < Convert.ToInt32(txtSalesAmount.Text))
+                MessageBox.Show("You have bot enough product for sale");
+            else
+            {
+                detail.salesAmount = Convert.ToInt32(txtSalesAmount.Text);
+                detail.salesDate = DateTime.Today;
+                if (bll.Insert(detail))
+                {
+                    MessageBox.Show("Sales was added");
+                    bll = new SalesBLL();
+                    dto = bll.Select();
+                    gridProduct.DataSource = dto.products;
+                    comboFull = false;
+                    cmbCategory.DataSource = dto.categories;
+                    if (dto.products.Count > 0)
+                        comboFull = true;
+                    txtSalesAmount.Clear();
+                }
+            }
         }
     }
 }

@@ -22,7 +22,16 @@ namespace StockTracking.DAL.DAO
 
         public bool Insert(SALE entity)
         {
-            throw new NotImplementedException();
+            try
+            {
+                db.SALES.Add(entity);
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public List<SalesDetailDTO> Select()

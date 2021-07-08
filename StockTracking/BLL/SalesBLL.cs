@@ -28,7 +28,20 @@ namespace StockTracking.BLL
 
         public bool Insert(SalesDetailDTO entity)
         {
-            throw new NotImplementedException();
+            SALE sales = new SALE();
+            sales.CategoryId = entity.categoryId;
+            sales.ProductId = entity.productId;
+            sales.CustomerId = entity.customerId;
+            sales.ProductSalesPrice = entity.price;
+            sales.ProductSalesAmount = entity.salesAmount;
+            sales.SalesDate = entity.salesDate;
+            sales.CategoryId = entity.categoryId;
+            bool boolInsert = salesDao.Insert(sales);
+            PRODUCT product = new PRODUCT();
+            product.Id = entity.productId;
+            product.StockAmout = entity.stockAmount - entity.salesAmount;
+            ProductDAO.Update(product);
+            return boolInsert;
         }
 
         public SalesDTO Select()
