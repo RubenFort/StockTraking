@@ -187,6 +187,7 @@
             this.gridCustomers.ReadOnly = true;
             this.gridCustomers.Size = new System.Drawing.Size(300, 225);
             this.gridCustomers.TabIndex = 1;
+            this.gridCustomers.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridCustomers_RowEnter);
             // 
             // panel3
             // 
@@ -239,6 +240,7 @@
             this.gridProduct.ReadOnly = true;
             this.gridProduct.Size = new System.Drawing.Size(300, 186);
             this.gridProduct.TabIndex = 1;
+            this.gridProduct.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridProduct_RowEnter);
             // 
             // panel2
             // 

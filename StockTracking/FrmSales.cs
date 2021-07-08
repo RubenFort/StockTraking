@@ -15,6 +15,7 @@ namespace StockTracking
     public partial class FrmSales : Form
     {
         public SalesDTO dto = new SalesDTO();
+        SalesDetailDTO detail = new SalesDetailDTO();
         bool comboFull = false;
 
         public FrmSales()
@@ -60,6 +61,12 @@ namespace StockTracking
                 List<ProductDetailDTO> list = dto.products;
                 list = list.Where(x => x.categoryId == Convert.ToInt32(cmbCategory.SelectedValue)).ToList();
                 gridProduct.DataSource = list;
+                if (list.Count == 0)
+                {
+                    txtProductName.Clear();
+                    txtPrice.Clear();
+                    txtStock.Clear();
+                }
             }
         }
 
@@ -68,6 +75,27 @@ namespace StockTracking
             List<CustomerDetailDTO> list = dto.customers;
             list = list.Where(x => x.customerName.Contains(txtCustomerSearch.Text)).ToList();
             gridCustomers.DataSource = list;
+            if (list.Count == 0)
+                txtCustomerName.Clear();
+        }
+
+        private void gridProduct_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            detail.productName = gridProduct.Rows[e.RowIndex].Cells[0].Value.ToString();
+            detail.price = Convert.ToInt32(gridProduct.Rows[e.RowIndex].Cells[3].Value);
+            detail.stockAmount = Convert.ToInt32(gridProduct.Rows[e.RowIndex].Cells[2].Value);
+            detail.productId = Convert.ToInt32(gridProduct.Rows[e.RowIndex].Cells[4].Value);
+            detail.categoryId = Convert.ToInt32(gridProduct.Rows[e.RowIndex].Cells[5].Value);
+            txtProductName.Text = detail.productName;
+            txtPrice.Text = detail.price.ToString();
+            txtStock.Text = detail.stockAmount.ToString();
+        }
+
+        private void gridCustomers_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            detail.customerName = gridCustomers.Rows[e.RowIndex].Cells[1].Value.ToString();
+            detail.customerId = Convert.ToInt32(gridCustomers.Rows[e.RowIndex].Cells[0].Value);
+            txtCustomerName.Text = detail.customerName;
         }
     }
 }
