@@ -15,7 +15,8 @@ namespace StockTracking
     public partial class FrmSales : Form
     {
         public SalesDTO dto = new SalesDTO();
-        SalesDetailDTO detail = new SalesDetailDTO();
+        public SalesDetailDTO detail = new SalesDetailDTO();
+        public bool isUpdate = false;
         SalesBLL bll = new SalesBLL();
         bool comboFull = false;
 
@@ -40,18 +41,32 @@ namespace StockTracking
             cmbCategory.DisplayMember = "CategoryName";
             cmbCategory.ValueMember = "Id";
             cmbCategory.SelectedIndex = -1;
-            gridProduct.DataSource = dto.products;
-            gridProduct.Columns[0].HeaderText = "Product Name";
-            gridProduct.Columns[1].HeaderText = "Category Name";
-            gridProduct.Columns[2].HeaderText = "Stock Amount";
-            gridProduct.Columns[3].HeaderText = "Price";
-            gridProduct.Columns[4].Visible = false;
-            gridProduct.Columns[5].Visible = false;
-            gridCustomers.DataSource = dto.customers;
-            gridCustomers.Columns[0].Visible = false;
-            gridCustomers.Columns[1].HeaderText = "Customer Name";
-            if (dto.categories.Count > 0)
-                comboFull = true;
+            if (!isUpdate)
+            {
+                gridProduct.DataSource = dto.products;
+                gridProduct.Columns[0].HeaderText = "Product Name";
+                gridProduct.Columns[1].HeaderText = "Category Name";
+                gridProduct.Columns[2].HeaderText = "Stock Amount";
+                gridProduct.Columns[3].HeaderText = "Price";
+                gridProduct.Columns[4].Visible = false;
+                gridProduct.Columns[5].Visible = false;
+                gridCustomers.DataSource = dto.customers;
+                gridCustomers.Columns[0].Visible = false;
+                gridCustomers.Columns[1].HeaderText = "Customer Name";
+                if (dto.categories.Count > 0)
+                    comboFull = true;
+            }
+            else
+            {
+                panel1.Hide();
+                txtCustomerName.Text = detail.customerName;
+                txtProductName.Text = detail.productName;
+                txtPrice.Text = detail.price.ToString();
+                txtSalesAmount.Text = detail.salesAmount.ToString();
+                ProductDetailDTO product = dto.products.First(x => x.productId == detail.productId);
+                detail.stockAmount = product.stockAmount;
+                txtStock.Text = detail.stockAmount.ToString();
+            }
         }
 
         private void cmbCategory_SelectedIndexChanged(object sender, EventArgs e)
@@ -100,27 +115,55 @@ namespace StockTracking
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (detail.productId == 0)
-                MessageBox.Show("Please select a product from product table");
-            else if (detail.productId == 0)
-                MessageBox.Show("Please select a customer from customer table");
-            else if (detail.stockAmount < Convert.ToInt32(txtSalesAmount.Text))
-                MessageBox.Show("You have bot enough product for sale");
+            if (txtSalesAmount.Text.Trim() == "")
+                MessageBox.Show("Please fill the sales amounta rea");
             else
             {
-                detail.salesAmount = Convert.ToInt32(txtSalesAmount.Text);
-                detail.salesDate = DateTime.Today;
-                if (bll.Insert(detail))
+                if (!isUpdate)//Add
                 {
-                    MessageBox.Show("Sales was added");
-                    bll = new SalesBLL();
-                    dto = bll.Select();
-                    gridProduct.DataSource = dto.products;
-                    comboFull = false;
-                    cmbCategory.DataSource = dto.categories;
-                    if (dto.products.Count > 0)
-                        comboFull = true;
-                    txtSalesAmount.Clear();
+                    if (detail.productId == 0)
+                        MessageBox.Show("Please select a product from sale table");
+                    else if (detail.customerId == 0)
+                        MessageBox.Show("Please select a customer from sale table");
+                    else if (detail.stockAmount < Convert.ToInt32(txtSalesAmount.Text))
+                        MessageBox.Show("You have bot enough product for sale");
+                    else
+                    {
+                        detail.salesAmount = Convert.ToInt32(txtSalesAmount.Text);
+                        detail.salesDate = DateTime.Today;
+                        if (bll.Insert(detail))
+                        {
+                            MessageBox.Show("Sales was added");
+                            bll = new SalesBLL();
+                            dto = bll.Select();
+                            gridProduct.DataSource = dto.products;
+                            comboFull = false;
+                            cmbCategory.DataSource = dto.categories;
+                            if (dto.products.Count > 0)
+                                comboFull = true;
+                            txtSalesAmount.Clear();
+                        }
+                    }
+                }
+                else//Update
+                {
+                    if (detail.salesAmount == Convert.ToInt32(txtSalesAmount.Text))
+                        MessageBox.Show("There is no change");
+                    else
+                    {
+                        int temp = detail.stockAmount + detail.salesAmount;
+                        if (temp<Convert.ToInt32(txtSalesAmount.Text))
+                            MessageBox.Show("You have not enough product for sale");
+                        else
+                        {
+                            detail.salesAmount = Convert.ToInt32(txtSalesAmount.Text);
+                            detail.stockAmount = temp - detail.salesAmount;
+                            if (bll.Update(detail))
+                            {
+                                MessageBox.Show("Sales was updated");
+                            }
+                        }
+                    }
                 }
             }
         }

@@ -16,6 +16,7 @@ namespace StockTracking
     {
         SalesBLL bll = new SalesBLL();
         SalesDTO dto = new SalesDTO();
+        SalesDetailDTO detail = new SalesDetailDTO();
 
         public FrmSaleList()
         {
@@ -34,7 +35,22 @@ namespace StockTracking
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-
+            if (detail.salesId == 0)
+                MessageBox.Show("Please select a sale from table");
+            else
+            {
+                FrmSales frm = new FrmSales();
+                frm.detail = detail;
+                frm.dto = dto;
+                frm.isUpdate = true;
+                this.Hide();
+                frm.ShowDialog();
+                this.Visible = true;
+                bll = new SalesBLL();
+                dto = bll.Select();
+                dataGridView1.DataSource = dto.sales;
+                CleanFilters();
+            }
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -139,6 +155,24 @@ namespace StockTracking
             chkDate.Checked = false;
             cmbCategory.SelectedIndex = -1;
             dataGridView1.DataSource = dto.sales;
+        }
+
+        private void dataGridView1_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            detail = new SalesDetailDTO();
+            try
+            {
+                detail.salesId = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[10].Value);
+                detail.productId = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[4].Value);
+                detail.customerName = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
+                detail.productName = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
+                detail.price = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[7].Value);
+                detail.salesAmount = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[6].Value);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }

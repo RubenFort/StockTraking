@@ -81,7 +81,17 @@ namespace StockTracking.DAL.DAO
 
         public bool Update(SALE entity)
         {
-            throw new NotImplementedException();
+            try
+            {
+                SALE sales = db.SALES.First(x => x.Id == entity.Id);
+                sales.ProductSalesAmount = entity.ProductSalesAmount;
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }

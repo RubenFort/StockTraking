@@ -153,11 +153,10 @@ namespace StockTracking
                 detail.productName = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
                 detail.price = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[3].Value);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                
+                throw ex; 
             }
-            
         }
     }
 }
