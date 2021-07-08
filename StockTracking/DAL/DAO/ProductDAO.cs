@@ -75,10 +75,14 @@ namespace StockTracking.DAL.DAO
             {
                 PRODUCT product = db.PRODUCTs.First(x => x.Id == entity.Id);
                 if (entity.CategoryId == 0)
-                {
                     product.StockAmout = entity.StockAmout;
-                    db.SaveChanges();
+                else
+                {
+                    product.ProductName = entity.ProductName;
+                    product.Price = entity.Price;
+                    product.CategoryId = entity.CategoryId;
                 }
+                db.SaveChanges();
                 return true;
             }
             catch (Exception ex)

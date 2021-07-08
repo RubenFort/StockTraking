@@ -16,6 +16,7 @@ namespace StockTracking
     {
         ProductBLL bll = new ProductBLL();
         ProductDTO dto = new ProductDTO();
+        ProductDetailDTO detail = new ProductDetailDTO();
 
         public FrmProductList()
         {
@@ -34,7 +35,22 @@ namespace StockTracking
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-
+            if (detail.productId == 0)
+                MessageBox.Show("Please select a product from table");
+            else
+            {
+                FrmProduct frm = new FrmProduct();
+                frm.detail = detail;
+                frm.dto = dto;
+                frm.isUpdate = true;
+                this.Hide();
+                frm.ShowDialog();
+                this.Visible = true;
+                bll = new ProductBLL();
+                dto = bll.Select();
+                dataGridView1.DataSource = dto.products;
+                CleanFilters();
+            }
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -125,6 +141,23 @@ namespace StockTracking
             rbMoreStock.Checked = false;
             rbLessStock.Checked = false;
             dataGridView1.DataSource = dto.products;
+        }
+
+        private void dataGridView1_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            detail = new ProductDetailDTO();
+            try
+            {
+                detail.productId = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[4].Value);
+                detail.categoryId = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[5].Value);
+                detail.productName = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
+                detail.price = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[3].Value);
+            }
+            catch (Exception)
+            {
+                
+            }
+            
         }
     }
 }
