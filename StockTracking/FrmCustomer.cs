@@ -14,6 +14,8 @@ namespace StockTracking
 {
     public partial class FrmCustomer : Form
     {
+        public CustomerDetailDTO detail = new CustomerDetailDTO();
+        public bool isUpdate = false;
         CustomerBLL bll = new CustomerBLL();
 
         public FrmCustomer()
@@ -32,14 +34,37 @@ namespace StockTracking
                 MessageBox.Show("Customer name is empty");
             else
             {
-                CustomerDetailDTO customer = new CustomerDetailDTO();
-                customer.customerName = txtCustomerName.Text;
-                if (bll.Insert(customer))
+                if (!isUpdate)
                 {
-                    MessageBox.Show("Customer was added");
-                    txtCustomerName.Clear();
+                    CustomerDetailDTO customer = new CustomerDetailDTO();
+                    customer.customerName = txtCustomerName.Text;
+                    if (bll.Insert(customer))
+                    {
+                        MessageBox.Show("Customer was added");
+                        txtCustomerName.Clear();
+                    }
+                }
+                else
+                {
+                    if (detail.customerName == txtCustomerName.Text.Trim())
+                        MessageBox.Show("There is no change");
+                    else
+                    {
+                        detail.customerName = txtCustomerName.Text;
+                        if (bll.Update(detail))
+                        {
+                            MessageBox.Show("Category was updated");
+                            this.Close();
+                        }
+                    }
                 }
             }
+        }
+
+        private void FrmCustomer_Load(object sender, EventArgs e)
+        {
+            if (isUpdate)
+                txtCustomerName.Text = detail.customerName;
         }
     }
 }
