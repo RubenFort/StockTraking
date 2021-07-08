@@ -84,7 +84,7 @@
             this.Controls.Add(this.txtCategoryName);
             this.Controls.Add(this.label1);
             this.Name = "FrmCategory";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Category";
             this.Load += new System.EventHandler(this.FrmCategory_Load);
             this.ResumeLayout(false);

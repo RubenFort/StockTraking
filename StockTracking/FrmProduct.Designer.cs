@@ -130,7 +130,7 @@
             this.Controls.Add(this.txtProductName);
             this.Controls.Add(this.label1);
             this.Name = "FrmProduct";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Product";
             this.Load += new System.EventHandler(this.FrmProduct_Load);
             this.ResumeLayout(false);

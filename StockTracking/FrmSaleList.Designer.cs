@@ -37,14 +37,14 @@
             this.dtpStart = new System.Windows.Forms.DateTimePicker();
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.rbSalesAmount = new System.Windows.Forms.RadioButton();
+            this.rbLessSalesAmount = new System.Windows.Forms.RadioButton();
             this.rbMoreSalesAmount = new System.Windows.Forms.RadioButton();
             this.rbEqualSalesAmount = new System.Windows.Forms.RadioButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.rbLessPrice = new System.Windows.Forms.RadioButton();
             this.rbMorePrice = new System.Windows.Forms.RadioButton();
             this.rbEqualPrice = new System.Windows.Forms.RadioButton();
-            this.txtDalesAmount = new System.Windows.Forms.TextBox();
+            this.txtSalesAmount = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtPrice = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -78,7 +78,7 @@
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.groupBox2);
             this.panel1.Controls.Add(this.groupBox1);
-            this.panel1.Controls.Add(this.txtDalesAmount);
+            this.panel1.Controls.Add(this.txtSalesAmount);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.txtPrice);
             this.panel1.Controls.Add(this.label2);
@@ -104,6 +104,7 @@
             this.btnClean.TabIndex = 10;
             this.btnClean.Text = "Clean";
             this.btnClean.UseVisualStyleBackColor = true;
+            this.btnClean.Click += new System.EventHandler(this.btnClean_Click);
             // 
             // btnSearch
             // 
@@ -114,6 +115,7 @@
             this.btnSearch.TabIndex = 9;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // chkDate
             // 
@@ -162,7 +164,7 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.rbSalesAmount);
+            this.groupBox2.Controls.Add(this.rbLessSalesAmount);
             this.groupBox2.Controls.Add(this.rbMoreSalesAmount);
             this.groupBox2.Controls.Add(this.rbEqualSalesAmount);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -173,16 +175,16 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Sales Amount";
             // 
-            // rbSalesAmount
+            // rbLessSalesAmount
             // 
-            this.rbSalesAmount.AutoSize = true;
-            this.rbSalesAmount.Location = new System.Drawing.Point(17, 87);
-            this.rbSalesAmount.Name = "rbSalesAmount";
-            this.rbSalesAmount.Size = new System.Drawing.Size(65, 24);
-            this.rbSalesAmount.TabIndex = 2;
-            this.rbSalesAmount.TabStop = true;
-            this.rbSalesAmount.Text = "Less";
-            this.rbSalesAmount.UseVisualStyleBackColor = true;
+            this.rbLessSalesAmount.AutoSize = true;
+            this.rbLessSalesAmount.Location = new System.Drawing.Point(17, 87);
+            this.rbLessSalesAmount.Name = "rbLessSalesAmount";
+            this.rbLessSalesAmount.Size = new System.Drawing.Size(65, 24);
+            this.rbLessSalesAmount.TabIndex = 2;
+            this.rbLessSalesAmount.TabStop = true;
+            this.rbLessSalesAmount.Text = "Less";
+            this.rbLessSalesAmount.UseVisualStyleBackColor = true;
             // 
             // rbMoreSalesAmount
             // 
@@ -252,14 +254,14 @@
             this.rbEqualPrice.Text = "Equal";
             this.rbEqualPrice.UseVisualStyleBackColor = true;
             // 
-            // txtDalesAmount
+            // txtSalesAmount
             // 
-            this.txtDalesAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDalesAmount.Location = new System.Drawing.Point(497, 46);
-            this.txtDalesAmount.Name = "txtDalesAmount";
-            this.txtDalesAmount.Size = new System.Drawing.Size(140, 26);
-            this.txtDalesAmount.TabIndex = 4;
-            this.txtDalesAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDalesAmount_KeyPress);
+            this.txtSalesAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSalesAmount.Location = new System.Drawing.Point(497, 46);
+            this.txtSalesAmount.Name = "txtSalesAmount";
+            this.txtSalesAmount.Size = new System.Drawing.Size(140, 26);
+            this.txtSalesAmount.TabIndex = 4;
+            this.txtSalesAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDalesAmount_KeyPress);
             // 
             // label4
             // 
@@ -421,6 +423,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "FrmSaleList";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmSaleList";
             this.Load += new System.EventHandler(this.FrmSaleList_Load);
             this.panel1.ResumeLayout(false);
@@ -457,10 +460,10 @@
         private System.Windows.Forms.TextBox txtPrice;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.RadioButton rbSalesAmount;
+        private System.Windows.Forms.RadioButton rbLessSalesAmount;
         private System.Windows.Forms.RadioButton rbMoreSalesAmount;
         private System.Windows.Forms.RadioButton rbEqualSalesAmount;
-        private System.Windows.Forms.TextBox txtDalesAmount;
+        private System.Windows.Forms.TextBox txtSalesAmount;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.DateTimePicker dtpEnd;
