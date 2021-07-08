@@ -42,7 +42,7 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.gridCustomers = new System.Windows.Forms.DataGridView();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.txtCustomerNameCustomer = new System.Windows.Forms.TextBox();
+            this.txtCustomerSearch = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.gridProduct = new System.Windows.Forms.DataGridView();
@@ -190,7 +190,7 @@
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.txtCustomerNameCustomer);
+            this.panel3.Controls.Add(this.txtCustomerSearch);
             this.panel3.Controls.Add(this.label6);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(3, 22);
@@ -198,13 +198,14 @@
             this.panel3.Size = new System.Drawing.Size(300, 86);
             this.panel3.TabIndex = 0;
             // 
-            // txtCustomerNameCustomer
+            // txtCustomerSearch
             // 
-            this.txtCustomerNameCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCustomerNameCustomer.Location = new System.Drawing.Point(17, 38);
-            this.txtCustomerNameCustomer.Name = "txtCustomerNameCustomer";
-            this.txtCustomerNameCustomer.Size = new System.Drawing.Size(183, 26);
-            this.txtCustomerNameCustomer.TabIndex = 0;
+            this.txtCustomerSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCustomerSearch.Location = new System.Drawing.Point(17, 38);
+            this.txtCustomerSearch.Name = "txtCustomerSearch";
+            this.txtCustomerSearch.Size = new System.Drawing.Size(183, 26);
+            this.txtCustomerSearch.TabIndex = 0;
+            this.txtCustomerSearch.TextChanged += new System.EventHandler(this.txtCustomerSearch_TextChanged);
             // 
             // label6
             // 
@@ -257,6 +258,7 @@
             this.cmbCategory.Name = "cmbCategory";
             this.cmbCategory.Size = new System.Drawing.Size(140, 28);
             this.cmbCategory.TabIndex = 0;
+            this.cmbCategory.SelectedIndexChanged += new System.EventHandler(this.cmbCategory_SelectedIndexChanged);
             // 
             // label5
             // 
@@ -345,7 +347,7 @@
         private System.Windows.Forms.DataGridView gridProduct;
         private System.Windows.Forms.ComboBox cmbCategory;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txtCustomerNameCustomer;
+        private System.Windows.Forms.TextBox txtCustomerSearch;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.DataGridView gridCustomers;
         private System.Windows.Forms.Button btnClose;

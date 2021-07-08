@@ -15,6 +15,7 @@ namespace StockTracking
     public partial class FrmSales : Form
     {
         public SalesDTO dto = new SalesDTO();
+        bool comboFull = false;
 
         public FrmSales()
         {
@@ -47,6 +48,26 @@ namespace StockTracking
             gridCustomers.DataSource = dto.customers;
             gridCustomers.Columns[0].Visible = false;
             gridCustomers.Columns[1].HeaderText = "Customer Name";
+            if (dto.categories.Count > 0)
+                comboFull = true;
+            
+        }
+
+        private void cmbCategory_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboFull)
+            {
+                List<ProductDetailDTO> list = dto.products;
+                list = list.Where(x => x.categoryId == Convert.ToInt32(cmbCategory.SelectedValue)).ToList();
+                gridProduct.DataSource = list;
+            }
+        }
+
+        private void txtCustomerSearch_TextChanged(object sender, EventArgs e)
+        {
+            List<CustomerDetailDTO> list = dto.customers;
+            list = list.Where(x => x.customerName.Contains(txtCustomerSearch.Text)).ToList();
+            gridCustomers.DataSource = list;
         }
     }
 }
