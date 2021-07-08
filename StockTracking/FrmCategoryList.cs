@@ -16,6 +16,7 @@ namespace StockTracking
     {
         CategoryDTO dto = new CategoryDTO();
         CategoryBLL bll = new CategoryBLL();
+        CategoryDetailDTO detail = new CategoryDetailDTO();
 
         public FrmCategoryList()
         {
@@ -51,6 +52,31 @@ namespace StockTracking
             //list se flitra a si misma en base a los CategoryName que coincidan con la caja de texto
             list = list.Where(x => x.CategoryName.Contains(txtCategoryName.Text)).ToList();
             dataGridView1.DataSource = list;
+        }
+
+        private void dataGridView1_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            detail = new CategoryDetailDTO();
+            detail.Id = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[0].Value);
+            detail.CategoryName = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            if (detail.Id == 0)
+                MessageBox.Show("Please select a category from table");
+            else
+            {
+                FrmCategory frm = new FrmCategory();
+                frm.detail = detail;
+                frm.isUpdate = true;
+                this.Hide();
+                frm.ShowDialog();
+                this.Visible = true;
+                bll = new CategoryBLL();
+                dto = bll.Select();
+                dataGridView1.DataSource = dto.categories;
+            }
         }
     }
 }

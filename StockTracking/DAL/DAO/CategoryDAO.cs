@@ -54,7 +54,17 @@ namespace StockTracking.DAL.DAO
 
         public bool Update(CATEGORY entity)
         {
-            throw new NotImplementedException();
+            try
+            {
+                CATEGORY category = db.CATEGORies.First(x => x.Id == entity.Id);
+                category.CategoryName = entity.CategoryName;
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }
