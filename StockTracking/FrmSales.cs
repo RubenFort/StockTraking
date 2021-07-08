@@ -51,7 +51,6 @@ namespace StockTracking
             gridCustomers.Columns[1].HeaderText = "Customer Name";
             if (dto.categories.Count > 0)
                 comboFull = true;
-            
         }
 
         private void cmbCategory_SelectedIndexChanged(object sender, EventArgs e)
