@@ -29,6 +29,8 @@ namespace StockTracking.BLL
         public bool Insert(SalesDetailDTO entity)
         {
             SALE sales = new SALE();
+            PRODUCT product = new PRODUCT();
+
             sales.CategoryId = entity.categoryId;
             sales.ProductId = entity.productId;
             sales.CustomerId = entity.customerId;
@@ -37,7 +39,6 @@ namespace StockTracking.BLL
             sales.SalesDate = entity.salesDate;
             sales.CategoryId = entity.categoryId;
             bool boolInsert = salesDao.Insert(sales);
-            PRODUCT product = new PRODUCT();
             product.Id = entity.productId;
             product.StockAmout = entity.stockAmount - entity.salesAmount;
             ProductDAO.Update(product);
@@ -50,7 +51,7 @@ namespace StockTracking.BLL
             dto.products = ProductDAO.Select();
             dto.customers = customerDAO.Select();
             dto.categories = categoryDAO.Select();
-            //dto.sales = salesDao.Select();
+            dto.sales = salesDao.Select();
             return dto;
         }
 

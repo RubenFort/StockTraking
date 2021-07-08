@@ -162,7 +162,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel1.Location = new System.Drawing.Point(464, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(306, 627);
+            this.panel1.Size = new System.Drawing.Size(468, 627);
             this.panel1.TabIndex = 21;
             // 
             // groupBox2
@@ -173,19 +173,20 @@
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(0, 291);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(306, 336);
+            this.groupBox2.Size = new System.Drawing.Size(468, 336);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Customers";
             // 
             // gridCustomers
             // 
+            this.gridCustomers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.gridCustomers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridCustomers.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridCustomers.Location = new System.Drawing.Point(3, 108);
             this.gridCustomers.Name = "gridCustomers";
             this.gridCustomers.ReadOnly = true;
-            this.gridCustomers.Size = new System.Drawing.Size(300, 225);
+            this.gridCustomers.Size = new System.Drawing.Size(462, 225);
             this.gridCustomers.TabIndex = 1;
             this.gridCustomers.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridCustomers_RowEnter);
             // 
@@ -196,7 +197,7 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(3, 22);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(300, 86);
+            this.panel3.Size = new System.Drawing.Size(462, 86);
             this.panel3.TabIndex = 0;
             // 
             // txtCustomerSearch
@@ -226,19 +227,20 @@
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(306, 291);
+            this.groupBox1.Size = new System.Drawing.Size(468, 291);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Products";
             // 
             // gridProduct
             // 
+            this.gridProduct.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.gridProduct.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridProduct.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridProduct.Location = new System.Drawing.Point(3, 102);
             this.gridProduct.Name = "gridProduct";
             this.gridProduct.ReadOnly = true;
-            this.gridProduct.Size = new System.Drawing.Size(300, 186);
+            this.gridProduct.Size = new System.Drawing.Size(462, 186);
             this.gridProduct.TabIndex = 1;
             this.gridProduct.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridProduct_RowEnter);
             // 
@@ -249,7 +251,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(3, 22);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(300, 80);
+            this.panel2.Size = new System.Drawing.Size(462, 80);
             this.panel2.TabIndex = 0;
             // 
             // cmbCategory
@@ -298,7 +300,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(770, 627);
+            this.ClientSize = new System.Drawing.Size(932, 627);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.panel1);
