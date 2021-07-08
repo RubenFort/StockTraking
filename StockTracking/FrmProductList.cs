@@ -62,17 +62,6 @@ namespace StockTracking
         private void FrmProductList_Load(object sender, EventArgs e)
         {
             dto = bll.Select();
-            cmbCategory.DataSource = dto.categories;
-            cmbCategory.DisplayMember = "CategoryName";
-            cmbCategory.ValueMember = "Id";
-            cmbCategory.SelectedIndex = -1;
-            dataGridView1.DataSource = dto.products;
-            dataGridView1.Columns[0].HeaderText = "Product Name";
-            dataGridView1.Columns[1].HeaderText = "Category Name";
-            dataGridView1.Columns[2].HeaderText = "Stock Amount";
-            dataGridView1.Columns[3].HeaderText = "Price";
-            dataGridView1.Columns[4].Visible = false;
-            dataGridView1.Columns[5].Visible = false;
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
