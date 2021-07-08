@@ -14,10 +14,31 @@ namespace StockTracking.DAL.DAO
         {
             try
             {
-                PRODUCT product = db.PRODUCTs.First(x => x.Id == entity.Id);
-                product.isDeleted = true;
-                product.DeletedDate = DateTime.Today;
-                db.SaveChanges();
+                if (entity.Id != 0)
+                {
+                    PRODUCT product = db.PRODUCTs.First(x => x.Id == entity.Id);
+                    product.isDeleted = true;
+                    product.DeletedDate = DateTime.Today;
+                    db.SaveChanges();
+                }
+                else if (entity.CategoryId != 0)
+                {
+                    List<PRODUCT> list = db.PRODUCTs.Where(x => x.CategoryId == entity.CategoryId).ToList();
+                    foreach (var item in list)
+                    {
+                        item.isDeleted = true;
+                        item.DeletedDate = DateTime.Today;
+                        IList<SALE> sales = db.SALES.Where(x => x.ProductId == item.Id).ToList();
+                        foreach (var item2 in sales)
+                        {
+                            item2.isDeleted = true;
+                            item2.DeletedDate = DateTime.Today;
+                        }
+                        db.SaveChanges();
+                    }
+                    db.SaveChanges();
+                }
+                
                 return true;
             }
             catch (Exception ex)
