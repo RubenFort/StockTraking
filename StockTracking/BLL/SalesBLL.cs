@@ -18,7 +18,14 @@ namespace StockTracking.BLL
 
         public bool Delete(SalesDetailDTO entity)
         {
-            throw new NotImplementedException();
+            SALE sales = new SALE();
+            sales.Id = entity.salesId;
+            salesDao.Delete(sales);
+            PRODUCT product = new PRODUCT();
+            product.Id = entity.productId;
+            product.StockAmout = entity.stockAmount + entity.salesAmount;
+            ProductDAO.Update(product);
+            return true;
         }
 
         public bool GetBack(int Id)
