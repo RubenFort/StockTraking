@@ -63,6 +63,20 @@ namespace StockTracking.DAL.DAO
             return categories;
         }
 
+        public List<CategoryDetailDTO> Select(bool isDeleted)
+        {
+            List<CategoryDetailDTO> categories = new List<CategoryDetailDTO>();
+            var list = db.CATEGORies.Where(x => x.isDeleted == isDeleted).ToList();
+            foreach (var item in list)
+            {
+                CategoryDetailDTO dto = new CategoryDetailDTO();
+                dto.Id = item.Id;
+                dto.CategoryName = item.CategoryName;
+                categories.Add(dto);
+            }
+            return categories;
+        }
+
         public bool Update(CATEGORY entity)
         {
             try

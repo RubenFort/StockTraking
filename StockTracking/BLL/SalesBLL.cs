@@ -12,7 +12,7 @@ namespace StockTracking.BLL
     public class SalesBLL : IBLL<SalesDetailDTO, SalesDTO>
     {
         SalesDAO salesDao = new SalesDAO();
-        ProductDAO ProductDAO = new ProductDAO();
+        ProductDAO productDAO = new ProductDAO();
         CategoryDAO categoryDAO = new CategoryDAO();
         CustomerDAO customerDAO = new CustomerDAO();
 
@@ -24,7 +24,7 @@ namespace StockTracking.BLL
             PRODUCT product = new PRODUCT();
             product.Id = entity.productId;
             product.StockAmout = entity.stockAmount + entity.salesAmount;
-            ProductDAO.Update(product);
+            productDAO.Update(product);
             return true;
         }
 
@@ -48,17 +48,27 @@ namespace StockTracking.BLL
             bool boolInsert = salesDao.Insert(sales);
             product.Id = entity.productId;
             product.StockAmout = entity.stockAmount - entity.salesAmount;
-            ProductDAO.Update(product);
+            productDAO.Update(product);
             return boolInsert;
         }
 
         public SalesDTO Select()
         {
             SalesDTO dto = new SalesDTO();
-            dto.products = ProductDAO.Select();
+            dto.products = productDAO.Select();
             dto.customers = customerDAO.Select();
             dto.categories = categoryDAO.Select();
             dto.sales = salesDao.Select();
+            return dto;
+        }
+
+        public SalesDTO Select(bool isDeleted)
+        {
+            SalesDTO dto = new SalesDTO();
+            dto.products = productDAO.Select(isDeleted);
+            dto.customers = customerDAO.Select(isDeleted);
+            dto.categories = categoryDAO.Select(isDeleted);
+            dto.sales = salesDao.Select(isDeleted);
             return dto;
         }
 
@@ -71,7 +81,7 @@ namespace StockTracking.BLL
             PRODUCT product = new PRODUCT();
             product.Id = entity.productId;
             product.StockAmout = entity.stockAmount;
-            ProductDAO.Update(product);
+            productDAO.Update(product);
             return true;
         }
     }

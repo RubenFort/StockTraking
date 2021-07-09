@@ -67,6 +67,27 @@ namespace StockTracking.DAL.DAO
             }
         }
 
+        public List<CustomerDetailDTO> Select(bool isDeleted)
+        {
+            try
+            {
+                List<CustomerDetailDTO> customers = new List<CustomerDetailDTO>();
+                var list = db.CUSTOMERs.Where(x => x.isDeleted == isDeleted).ToList();
+                foreach (var item in list)
+                {
+                    CustomerDetailDTO dto = new CustomerDetailDTO();
+                    dto.customerName = item.CustomerName;
+                    dto.id = item.Id;
+                    customers.Add(dto);
+                }
+                return customers;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public bool Update(CUSTOMER entity)
         {
             try
