@@ -14,5 +14,6 @@ namespace StockTracking.DAL.DTO
         public int price { get; set; }
         public int productId { get; set; }
         public int categoryId { get; set; }
+        public bool isCategoryDeleted { get; set; }
     }
 }

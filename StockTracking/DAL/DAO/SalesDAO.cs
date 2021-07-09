@@ -144,7 +144,10 @@ namespace StockTracking.DAL.DAO
                                 categoryId = s.CategoryId,
                                 salesPrice = s.ProductSalesPrice,
                                 salesAmount = s.ProductSalesAmount,
-                                salesDate = s.SalesDate
+                                salesDate = s.SalesDate,
+                                categoryDeleted = category.isDeleted,
+                                customerDeleted = c.isDeleted,
+                                productDeleted = p.isDeleted
                             }).OrderBy(x => x.salesDate).ToList();
                 foreach (var item in list)
                 {
@@ -159,6 +162,9 @@ namespace StockTracking.DAL.DAO
                     dto.price = item.salesPrice;
                     dto.salesAmount = item.salesAmount;
                     dto.salesDate = item.salesDate;
+                    dto.isCategoyDeleted = item.categoryDeleted;
+                    dto.isCustomerDeleted  = item.customerDeleted;
+                    dto.isProductDeleted = item.productDeleted;
                     sales.Add(dto);
                 }
                 return sales;
