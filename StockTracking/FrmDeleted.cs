@@ -16,6 +16,7 @@ namespace StockTracking
     {
         SalesBLL bll = new SalesBLL();
         SalesDTO dto = new SalesDTO();
+        ProductDTO productDTO = new ProductDTO();
         CategoryDetailDTO categoyDetail = new CategoryDetailDTO();
         CustomerDetailDTO customerDetail = new CustomerDetailDTO();
         ProductDetailDTO productDetail = new ProductDetailDTO();
@@ -73,14 +74,18 @@ namespace StockTracking
             }
             else if (cmbDeletedData.SelectedIndex == 2)
             {
+                //productDTO = new ProductDTO();
+                //productDTO = productBLL.Select();
+                //dataGridView1.DataSource = productDTO.products;
                 dataGridView1.DataSource = dto.products;
                 dataGridView1.Columns[0].HeaderText = "Product Name";
                 dataGridView1.Columns[1].HeaderText = "Category Name";
                 dataGridView1.Columns[2].HeaderText = "Stock Amount";
                 dataGridView1.Columns[3].HeaderText = "Price";
+                dataGridView1.Columns[6].HeaderText = "Category deleted";
                 dataGridView1.Columns[4].Visible = false;
                 dataGridView1.Columns[5].Visible = false;
-                dataGridView1.Columns[6].Visible = false;
+                //dataGridView1.Columns[6].Visible = false;
             }
             else if (cmbDeletedData.SelectedIndex == 3)
             {
@@ -162,6 +167,7 @@ namespace StockTracking
             }
             else if (cmbDeletedData.SelectedIndex == 2)
             {
+                
                 if (productDetail.isCategoryDeleted)
                     MessageBox.Show("Category was deleted first get back category");
                 else if (productBLL.GetBack(productDetail))
