@@ -28,9 +28,14 @@ namespace StockTracking.BLL
             return true;
         }
 
-        public bool GetBack(int Id)
+        public bool GetBack(SalesDetailDTO entity)
         {
-            throw new NotImplementedException();
+            salesDao.GetBack(entity.salesId);
+            PRODUCT product = new PRODUCT();
+            product.Id = entity.productId;
+            product.StockAmout = entity.stockAmount - entity.salesAmount;
+            productDAO.Update(product);
+            return true;
         }
 
         public bool Insert(SalesDetailDTO entity)

@@ -10,13 +10,20 @@ using System.Windows.Forms;
 using StockTracking.BLL;
 using StockTracking.DAL.DTO;
 
-
 namespace StockTracking
 {
     public partial class FrmDeleted : Form
     {
         SalesBLL bll = new SalesBLL();
         SalesDTO dto = new SalesDTO();
+        CategoryDetailDTO categoyDetail = new CategoryDetailDTO();
+        CustomerDetailDTO customerDetail = new CustomerDetailDTO();
+        ProductDetailDTO productDetail = new ProductDetailDTO();
+        SalesDetailDTO salesDetail = new SalesDetailDTO();
+        CategoryBLL categoryBLL = new CategoryBLL();
+        CustomerBLL customerBLL = new CustomerBLL();
+        ProductBLL productBLL = new ProductBLL();
+        SalesBLL salesBLL = new SalesBLL();
 
         public FrmDeleted()
         {
@@ -58,13 +65,13 @@ namespace StockTracking
                 dataGridView1.Columns[0].Visible = false;
                 dataGridView1.Columns[1].HeaderText = "Category Name";
             }
-            if (cmbDeletedData.SelectedIndex == 1)
+            else if (cmbDeletedData.SelectedIndex == 1)
             {
                 dataGridView1.DataSource = dto.customers;
                 dataGridView1.Columns[0].Visible = false;
                 dataGridView1.Columns[1].HeaderText = "Customer Name";
             }
-            if (cmbDeletedData.SelectedIndex == 2)
+            else if (cmbDeletedData.SelectedIndex == 2)
             {
                 dataGridView1.DataSource = dto.products;
                 dataGridView1.Columns[0].HeaderText = "Product Name";
@@ -74,7 +81,7 @@ namespace StockTracking
                 dataGridView1.Columns[4].Visible = false;
                 dataGridView1.Columns[5].Visible = false;
             }
-            if (cmbDeletedData.SelectedIndex == 3)
+            else if (cmbDeletedData.SelectedIndex == 3)
             {
                 dataGridView1.DataSource = dto.sales;
                 dataGridView1.Columns[0].HeaderText = "Customer Name";
@@ -88,6 +95,80 @@ namespace StockTracking
                 dataGridView1.Columns[5].Visible = false;
                 dataGridView1.Columns[9].Visible = false;
                 dataGridView1.Columns[10].Visible = false;
+            }
+        }
+
+        private void dataGridView1_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            if (cmbDeletedData.SelectedIndex == 0)
+            {
+                categoyDetail = new CategoryDetailDTO();
+                categoyDetail.Id = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[0].Value);
+                categoyDetail.CategoryName = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
+            }
+             else if (cmbDeletedData.SelectedIndex == 1)
+            {
+                customerDetail = new CustomerDetailDTO();
+                customerDetail.id = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[0].Value);
+                customerDetail.customerName = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
+            }
+            else if (cmbDeletedData.SelectedIndex == 2)
+            {
+                productDetail = new ProductDetailDTO();
+                productDetail.productId = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[4].Value);
+                productDetail.categoryId = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[5].Value);
+                productDetail.productName = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
+                productDetail.price = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[3].Value);
+            }
+            else if (cmbDeletedData.SelectedIndex == 3)
+            {
+                salesDetail = new SalesDetailDTO();
+                salesDetail.salesId = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[10].Value);
+                salesDetail.productId = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[4].Value);
+                salesDetail.customerName = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
+                salesDetail.productName = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
+                salesDetail.price = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[7].Value);
+                salesDetail.salesAmount = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[6].Value);
+            }
+        }
+
+        private void btnGetBack_Click(object sender, EventArgs e)
+        {
+            if (cmbDeletedData.SelectedIndex == 0)
+            {
+                if (categoryBLL.GetBack(categoyDetail))
+                {
+                    MessageBox.Show("Category was get back");
+                    dto = bll.Select(true);
+                    dataGridView1.DataSource = dto.categories;
+                }
+            }
+            else if (cmbDeletedData.SelectedIndex == 1)
+            {
+                if (customerBLL.GetBack(customerDetail))
+                {
+                    MessageBox.Show("Customer was get back");
+                    dto = bll.Select(true);
+                    dataGridView1.DataSource = dto.customers;
+                }
+            }
+            else if (cmbDeletedData.SelectedIndex == 2)
+            {
+                if (productBLL.GetBack(productDetail))
+                {
+                    MessageBox.Show("Product was get back");
+                    dto = bll.Select(true);
+                    dataGridView1.DataSource = dto.products;
+                }
+            }
+            else
+            {
+                if (salesBLL.GetBack(salesDetail))
+                {
+                    MessageBox.Show("Sales was get back");
+                    dto = bll.Select(true);
+                    dataGridView1.DataSource = dto.sales;
+                }
             }
         }
     }

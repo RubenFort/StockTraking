@@ -27,7 +27,18 @@ namespace StockTracking.DAL.DAO
 
         public bool GetBack(int Id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                CATEGORY category = db.CATEGORies.First(x => x.Id == Id);
+                category.isDeleted = false;
+                category.DeletedDate = null;
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         /// <summary>

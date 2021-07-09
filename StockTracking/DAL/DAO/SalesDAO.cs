@@ -51,7 +51,18 @@ namespace StockTracking.DAL.DAO
 
         public bool GetBack(int Id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                SALE sales = db.SALES.First(x => x.Id == Id);
+                sales.isDeleted = false;
+                sales.DeletedDate = null;
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public bool Insert(SALE entity)

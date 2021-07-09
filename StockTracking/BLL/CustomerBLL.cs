@@ -25,9 +25,9 @@ namespace StockTracking.BLL
             return true;
         }
 
-        public bool GetBack(int Id)
+        public bool GetBack(CustomerDetailDTO entity)
         {
-            throw new NotImplementedException();
+            return dao.GetBack(entity.id);
         }
 
         public bool Insert(CustomerDetailDTO entity)

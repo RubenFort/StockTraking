@@ -28,28 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnSales = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
             this.btnAddStock = new System.Windows.Forms.Button();
             this.btnCategory = new System.Windows.Forms.Button();
             this.btnDeleted = new System.Windows.Forms.Button();
             this.btnCustomer = new System.Windows.Forms.Button();
             this.btnProduct = new System.Windows.Forms.Button();
+            this.btnSales = new System.Windows.Forms.Button();
             this.SuspendLayout();
-            // 
-            // btnSales
-            // 
-            this.btnSales.BackColor = System.Drawing.Color.LemonChiffon;
-            this.btnSales.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSales.Image = global::StockTracking.Properties.Resources.coupon;
-            this.btnSales.Location = new System.Drawing.Point(264, 12);
-            this.btnSales.Name = "btnSales";
-            this.btnSales.Size = new System.Drawing.Size(120, 120);
-            this.btnSales.TabIndex = 8;
-            this.btnSales.Text = "Sales";
-            this.btnSales.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnSales.UseVisualStyleBackColor = false;
-            this.btnSales.Click += new System.EventHandler(this.btnSales_Click);
             // 
             // btnExit
             // 
@@ -82,7 +68,7 @@
             // 
             this.btnCategory.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCategory.Image = global::StockTracking.Properties.Resources.team_group_people_management_business_work_employees_icon_153126;
+            this.btnCategory.Image = global::StockTracking.Properties.Resources.menu;
             this.btnCategory.Location = new System.Drawing.Point(138, 151);
             this.btnCategory.Name = "btnCategory";
             this.btnCategory.Size = new System.Drawing.Size(120, 120);
@@ -110,7 +96,7 @@
             // 
             this.btnCustomer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.btnCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCustomer.Image = global::StockTracking.Properties.Resources.employee_person_business_teamwork_businessman_icon_175935;
+            this.btnCustomer.Image = global::StockTracking.Properties.Resources.market_research;
             this.btnCustomer.Location = new System.Drawing.Point(12, 12);
             this.btnCustomer.Name = "btnCustomer";
             this.btnCustomer.Size = new System.Drawing.Size(120, 120);
@@ -124,7 +110,7 @@
             // 
             this.btnProduct.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.btnProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnProduct.Image = global::StockTracking.Properties.Resources.box;
+            this.btnProduct.Image = global::StockTracking.Properties.Resources.checklist;
             this.btnProduct.Location = new System.Drawing.Point(138, 12);
             this.btnProduct.Name = "btnProduct";
             this.btnProduct.Size = new System.Drawing.Size(120, 120);
@@ -133,6 +119,20 @@
             this.btnProduct.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnProduct.UseVisualStyleBackColor = false;
             this.btnProduct.Click += new System.EventHandler(this.btnProduct_Click);
+            // 
+            // btnSales
+            // 
+            this.btnSales.BackColor = System.Drawing.Color.LemonChiffon;
+            this.btnSales.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSales.Image = global::StockTracking.Properties.Resources.coupon;
+            this.btnSales.Location = new System.Drawing.Point(264, 12);
+            this.btnSales.Name = "btnSales";
+            this.btnSales.Size = new System.Drawing.Size(120, 120);
+            this.btnSales.TabIndex = 8;
+            this.btnSales.Text = "Sales";
+            this.btnSales.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnSales.UseVisualStyleBackColor = false;
+            this.btnSales.Click += new System.EventHandler(this.btnSales_Click);
             // 
             // FrmMain
             // 
